@@ -1,0 +1,64 @@
+{
+  "home": {
+    "main-text": "Leidenschaftlicher Fotograf",
+    "sub-text": "Brauchen Sie einen Fotografen, ist es für eine Party, einen Geburtstag, ein Festival? Oder Sie möchten einfach nur ein neues Profilbild oder eine Fotosession. Kein Problem, schreiben Sie mir und wir werden uns bestimmt irgendwie verstehen."
+  },
+  "portfolio": {
+    "search": "Suchen",
+    "no-photos-found": "Keine Fotos gefunden"
+  },
+  "about-me": {
+    "who-i-am": "Wer bin ich?",
+    "main-text": "Das müssen wir uns als nicht-professioneller Hobbyfotograf merken, ich bin kein professioneller Fotograf, aber ich lerne aus meinen Fehlern und möchte immer bessere Fotos machen, damit meine Kunden zufrieden sind. Ich bin Szymon, interessiere mich seit über 5 Jahren für Fotografie und habe zwei Jahre Berufserfahrung.",
+    "photo-sessions": "Fotografische Sitzungen",
+    "festivals": "Feste",
+    "celebrations": "Feierlichkeiten",
+    "sporting-events": "Sportliche Veranstaltungen",
+    "automotive-events": "Ereignisse in der Automobilindustrie"
+  },
+  "to-download": {
+    "to-download": "Herunterladen",
+    "sub-text": "Geben Sie unten Ihren Zugangscode ein, um ausgewählte Fotos herunterzuladen",
+    "access-code": "Zugangscode",
+    "search": "Suchen"
+  },
+  "contact": {
+    "contact": "Kontakt",
+    "contact-me": "Kontaktieren Sie mich",
+    "name": "Name",
+    "message": "Botschaft",
+    "send": "Senden"
+  },
+  "login": {
+    "main-text": "Anmeldung",
+    "admin-panel": "Verwaltungs-Panel",
+    "password": "Passwort",
+    "login": "Sich anmelden"
+  },
+  "impressum": {
+    "owner": "Die Firma und Website gehört zu",
+    "contact": "Kontakt",
+    "phone": "Telefon"
+  },
+  "navbar": {
+    "main-page": "Startseite",
+    "portfolio": "Portfolio",
+    "about-me": "Über mich",
+    "to-download": "Herunterladen",
+    "contact": "Kontakt"
+  },
+  "gallery": {
+    "code": "Kod",
+    "expiration-date": "Verfallsdatum",
+    "description": "Beschreibung",
+    "number-of-photos": "Anzahl der Fotos"
+  },
+  "alert": {
+    "attention": "Beachtung",
+    "check-code": "Der angegebene Code ist ungültig",
+    "mail-success": "Ihre Nachricht wurde erfolgreich gesendet!",
+    "mail-fail": "Ihre Nachricht wurde nicht gesendet. Prüfen Sie, ob die erforderlichen Felder ausgefüllt wurden.",
+    "login-fail": "Es wurden falsche Daten eingegeben, bitte versuchen Sie es erneut."
+  },
+  "pageNotFound": "Seite nicht gefunden"
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "asString": "3 dni",
+    "asNumber": 259200000
+  },
+  {
+    "asString": "7 dni",
+    "asNumber": 604800000
+  },
+  {
+    "asString": "14 dni",
+    "asNumber": 1209600000
+  },
+  {
+    "asString": "1 miesiąc",
+    "asNumber": 2629800000
+  },
+  {
+    "asString": "3 miesiące",
+    "asNumber": 7889400000
+  },
+  {
+    "asString": "6 miesiące",
+    "asNumber": 15778800000
+  },
+  {
+    "asString": "1 rok",
+    "asNumber": 31557600000
+  },
+  {
+    "asString": "3 lata",
+    "asNumber": 94672800000
+  },
+  {
+    "asString": "5 lat",
+    "asNumber": 157788000000
+  }
+]

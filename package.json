@@ -1,0 +1,33 @@
+{
+  "name": "simmon-portfolio-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.14",
+    "autoprefixer": "^9.8.6",
+    "axios": "^0.21.4",
+    "core-js": "^3.6.5",
+    "emailjs-com": "^3.2.0",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.7.1",
+    "postcss": "^7.0.36",
+    "serve": "^12.0.1",
+    "swiper": "^7.0.6",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
+    "vue": "^3.0.0",
+    "vue-i18n": "^9.1.7",
+    "vue-router": "^4.0.0-0",
+    "vue3-carousel": "^0.1.27",
+    "vue3-cookies": "^1.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0"
+  }
+}

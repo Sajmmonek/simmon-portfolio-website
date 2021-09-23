@@ -1,0 +1,64 @@
+{
+  "home": {
+    "main-text": "Fotograf z pasji",
+    "sub-text": "Potrzebujesz fotografa, czy to na imprezę, urodziny, festiwal? Lub po prostu chciał/a byś nowe zdjęcie profilowe lub sesje zdjęciową. To żaden problem napisz do mnie a na pewno jakoś się dogadamy. "
+  },
+  "portfolio": {
+    "search": "Wyszukaj",
+    "no-photos-found": "Nie znaleziono żadnych zdjęć"
+  },
+  "about-me": {
+    "who-i-am": "Kim jestem?",
+    "main-text": "Fotograf hobbystyczny niezawodowy musimy o tym pamiętać, nie jestem fotografem profesjonalnym, lecz uczącym się na własnych błędach i chcący bycia lepszym w wykonywaniu coraz to lepszych zdjęć, aby klienci byli zadowoleni. Jestem Szymon i interesuje się fotografia już od ponad 5 lat, a z doświadczenia posiadam już dwuletni etat.",
+    "photo-sessions": "Sesje fotograficzne",
+    "festivals": "Festiwale",
+    "celebrations": "Uroczystości",
+    "sporting-events": "Wydarzenia sportowe",
+    "automotive-events": "Wydarzenia motoryzacyjne"
+  },
+  "to-download": {
+    "to-download": "Do pobrania",
+    "sub-text": "Poniżej podaj twój kod dostępu aby pobrać wybrane zdjęcia",
+    "access-code": "Kod dostępu",
+    "search": "Szukaj"
+  },
+  "contact": {
+    "contact": "Kontakt",
+    "contact-me": "Skontaktuj się ze mną",
+    "name": "Imię",
+    "message": "Wiadomość",
+    "send": "Wyślij"
+  },
+  "login": {
+    "main-text": "Logowanie",
+    "admin-panel": "Panel administracyjny",
+    "password": "Hasło",
+    "login": "Zaloguj"
+  },
+  "impressum": {
+    "owner": "Firma oraz strona internetowa należą do",
+    "contact": "Kontakt",
+    "phone": "Telefon"
+  },
+  "gallery": {
+    "code": "Kod",
+    "expiration-date": "Data wygaśnięcia",
+    "description": "Opis",
+    "number-of-photos": "Liczba zdjęć"
+  },
+  "navbar": {
+    "main-page": "Strona główna",
+    "portfolio": "Portfolio",
+    "about-me": "O mnie",
+    "to-download": "Do pobrania",
+    "contact": "Kontakt"
+  },
+  "alert": {
+    "attention": "Uwaga",
+    "check-code": "Podany kod jest niepoprawny",
+    "mail-success": "Twoja wiadomośc została pomyślnie wysłana!",
+    "mail-fail": "Twoja wiadomość nie została wysłana. Sprawdz czy wymagane pola zostały wypełnione.",
+    "login-fail": "Podano błędne dane, spróbuj jeszcze raz."
+  },
+  "pageNotFound": "Nie znaleziono takiej strony"
+}

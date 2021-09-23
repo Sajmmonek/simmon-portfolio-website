@@ -1,0 +1,64 @@
+{
+  "home": {
+    "main-text": "A passionate photographer",
+    "sub-text": "Need a photographer, is it for a party, birthday, festival? Or you just want a new profile picture or photo session. It's no problem, write to me and we will certainly get along somehow."
+  },
+  "portfolio": {
+    "search": "Search",
+    "no-photos-found": "No photos found"
+  },
+  "about-me": {
+    "who-i-am": "Who I am?",
+    "main-text": "We need to remember this as a non-professional hobby photographer, I am not a professional photographer, but I learn from my mistakes and want to be better at taking better and better photos, so that my clients are satisfied. I am Szymon and I have been interested in photography for over 5 years, and I have a two-year job experience.",
+    "photo-sessions": "Photo sessions",
+    "festivals": "Festivals",
+    "celebrations": "Celebrations",
+    "sporting-events": "Sporting events",
+    "automotive-events": "Automotive events"
+  },
+  "to-download": {
+    "to-download": "To download",
+    "sub-text": "Poniżej podaj twój kod dostępu aby pobrać wybrane zdjęcia",
+    "access-code": "Access code",
+    "search": "Search"
+  },
+  "contact": {
+    "contact": "Contact",
+    "contact-me": "Contact me",
+    "name": "Name",
+    "message": "Message",
+    "send": "Send"
+  },
+  "login": {
+    "main-text": "Login",
+    "admin-panel": "Administration panel",
+    "password": "Password",
+    "login": "Log in"
+  },
+  "impressum": {
+    "owner": "The company and website belongs to",
+    "contact": "Contact",
+    "phone": "Phone"
+  },
+  "navbar": {
+    "main-page": "Home",
+    "portfolio": "Portfolio",
+    "about-me": "About me",
+    "to-download": "To download",
+    "contact": "Contact"
+  },
+  "gallery": {
+    "code": "Code",
+    "expiration-date": "Expiration date",
+    "description": "Description",
+    "number-of-photos": "Number of photos"
+  },
+  "alert": {
+    "attention": "Attention",
+    "check-code": "The code provided is invalid.",
+    "mail-success": "Your message has been sent successfully!",
+    "mail-fail": "Your message has not been sent. Check if the required fields have been filled in.",
+    "login-fail": "Incorrect data was entered, please try again."
+  },
+  "pageNotFound": "Page not found"
+}
