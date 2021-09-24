@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     downloadSingleImage(url, index){
-      axios.get(url, { responseType: 'blob' })
+      axios.get(`${url}/`, { responseType: 'blob' })
         .then(response => {
           const blob = new Blob([response.data], { type: 'image/png, image/jpeg' })
           const link = document.createElement('a')
@@ -90,7 +90,7 @@ export default {
       var zip = new JSZip()
 
       this.gallery.images.forEach(async (image, index) => {
-        await axios.get(image, { responseType: 'blob' })
+        await axios.get(`${image}/`, { responseType: 'blob' })
         .then(response => {
           const indexOfDot = image.lastIndexOf('.')
           const typeOfImage = image.slice(indexOfDot, image.length);
