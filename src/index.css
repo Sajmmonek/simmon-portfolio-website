@@ -24,6 +24,10 @@ body {
   @apply px-4 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-800 rounded cursor-pointer hover:bg-gray-600 focus:outline-none;
 }
 
+.panel-layer {
+  @apply w-full h-screen bg-gray-800 p-10 flex flex-col justify-center items-center absolute left-0 top-0;
+}
+
 .carousel__item {
   min-height: 200px;
   width: 100%;

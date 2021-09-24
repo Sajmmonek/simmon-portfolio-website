@@ -30,19 +30,19 @@
           </div>
         </div>
         <div class="flex flex-row flex-wrap">
-          <button
+          <div
             class="bg-gray-700 rounded shadow-md mr-7 mb-10"
             v-show="driveImages.length !== 0"
-            @click="toggleShowPhotoLayer(image)"
             v-for="(image, index) in driveImages"
             :key="index"
           >
             <div class="flex flex-col w-full justify-end items-center">
-              <div
+              <button
+                @click="toggleShowPhotoLayer(image)"
                 class="w-72 h-72 bg-center bg-cover bg-no-repeat m-2 rounded shadow-md"
                 :style="{ backgroundImage: 'url(' + image.url + ')' }"
               >
-              </div>
+              </button>
               <div class="flex w-full justify-end">
                 <button @click="toggleDeleteDriveImageLayer(image.id)" class="hover:text-gray-300 mb-2 mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,19 +51,18 @@
                 </button>
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
     </div>
-    <DeleteImageLayer
+    <ConfirmDeleteLayer
       v-else-if="isDeleteDriveImageLayer && !isPhotoLayerVisible"
-      @toggle-delete-image-layer="toggleDeleteDriveImageLayer"
-      @delete-image="deleteDriveImage"
+      @delete-element="deleteDriveImage"
+      @toggle-confirm-delete-layer="toggleDeleteDriveImageLayer"
     />
     <PhotoLayer
       v-else-if="isPhotoLayerVisible && !isDeleteDriveImageLayer"
       :imageProp="this.imageToLayer"
-      class="ml-64"
       @toggle-show-photo-layer="toggleShowPhotoLayer"
     />
   </div>
@@ -72,7 +71,7 @@
 import axios from 'axios'
 import API_URL from '../API_URL'
 
-import DeleteImageLayer from '../components/DeleteImageLayer.vue'
+import ConfirmDeleteLayer from '../components/ConfirmDeleteLayer.vue'
 import PhotoLayer from '../components/PhotoLayer.vue'
 
 export default {
@@ -90,7 +89,7 @@ export default {
     jwt: String
   },
   components: {
-    DeleteImageLayer,
+    ConfirmDeleteLayer,
     PhotoLayer
   },
   async created() {

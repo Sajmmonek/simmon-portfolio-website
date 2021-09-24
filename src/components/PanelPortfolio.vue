@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div>
     <div v-if="!isDeletePortfolioImageLayer && !isPhotoLayerVisible" class="p-20 flex flex-col w-full">
       <h1 class="text-5xl font-bold">Portfolio</h1>
       <hr class="my-10 border-gray-700">
@@ -30,19 +30,19 @@
           </div>
         </div>
         <div class="flex flex-row flex-wrap">
-          <button
+          <div
             class="bg-gray-700 rounded shadow-md mr-7 mb-10"
             v-show="portfolioImages.length !== 0"
-            @click="toggleShowPhotoLayer(image)"
             v-for="(image, index) in portfolioImages"
             :key="index"
           >
             <div class="flex flex-col w-full justify-end items-center">
-              <div
+              <button
+                @click="toggleShowPhotoLayer(image)"
                 class="w-72 h-72 bg-center bg-cover bg-no-repeat m-2 rounded shadow-md"
                 :style="{ backgroundImage: 'url(' + image.image + ')' }"
               >
-              </div>
+              </button>
               <div class="flex w-full justify-end">
                 <router-link :to="{ name: 'EditPortfolioImage', params: { imageId: image.id, description: image.description, portfolioId: image.id }}" class="hover:text-gray-300">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,20 +56,19 @@
                 </button>
               </div>
             </div>
-          </button>
+          </div>
         </div>
       </div>
     </div>
-    <DeleteImageLayer
-      v-else-if="isDeletePortfolioImageLayer && !isPhotoLayerVisible"
-      @toggle-delete-image-layer="toggleDeletePortfolioImageLayer"
-      @delete-image="deletePortfolioImage"
-    />
     <PhotoLayer
-      v-else-if="isPhotoLayerVisible && !isDeletePortfolioImageLayer"
+      v-else-if="isPhotoLayerVisible"
       :imageProp="this.imageToLayer"
-      class="ml-64"
       @toggle-show-photo-layer="toggleShowPhotoLayer"
+    />
+    <ConfirmDeleteLayer
+      v-else-if="isDeletePortfolioImageLayer"
+      @delete-element="deletePortfolioImage"
+      @toggle-confirm-delete-layer="toggleDeletePortfolioImageLayer"
     />
   </div>
 </template>
@@ -77,7 +76,7 @@
 import axios from 'axios'
 import API_URL from '../API_URL'
 
-import DeleteImageLayer from './DeleteImageLayer.vue'
+import ConfirmDeleteLayer from './ConfirmDeleteLayer.vue'
 import PhotoLayer from './PhotoLayer.vue'
 
 export default {
@@ -95,7 +94,7 @@ export default {
     jwt: String,
   },
   components: {
-    DeleteImageLayer,
+    ConfirmDeleteLayer,
     PhotoLayer
   },
   async created() {
@@ -118,8 +117,9 @@ export default {
 
     },
     toggleDeletePortfolioImageLayer(id){
+      console.log('dzik');
+      this.isDeletePortfolioImageLayer = !this.isDeletePortfolioImageLayer
       this.portfolioImageId = id
-      this.isDeletePortfolioImageLayer = !this.isDeletePortfolioImageLayer;
     },
     toggleShowPhotoLayer(image) {
       this.isPhotoLayerVisible = !this.isPhotoLayerVisible

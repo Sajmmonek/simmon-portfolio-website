@@ -51,7 +51,8 @@
     "code": "Kod",
     "expiration-date": "Verfallsdatum",
     "description": "Beschreibung",
-    "number-of-photos": "Anzahl der Fotos"
+    "number-of-images": "Anzahl der Fotos",
+    "download-all-images": "Alle Fotos herunterladen"
   },
   "alert": {
     "attention": "Beachtung",

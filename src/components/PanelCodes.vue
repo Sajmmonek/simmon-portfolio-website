@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!isDeleteGalleryLayer && !isExtensionGalleryLayer" class="p-20 flex flex-col w-full">
+    <div v-if="!isConfirmDeleteLayer && !isExtensionGalleryLayer" class="p-20 flex flex-col w-full">
       <h1 class="text-5xl font-bold">Kody</h1>
       <hr class="my-10 border-gray-700">
       <div class="flex flex-row flex-wrap">
@@ -69,12 +69,10 @@
         </div>
       </div>
     </div>
-    <DeleteGalleryLayer
-      :codeId="codeId"
-      :codeCode="codeCode"
-      v-else-if="isDeleteGalleryLayer"
-      @delete-gallery="deleteGallery"
-      @toggle-delete-gallery-layer="toggleDeleteGalleryLayer"
+    <ConfirmDeleteLayer
+      v-else-if="isConfirmDeleteLayer "
+      @delete-element="deleteGallery"
+      @toggle-confirm-delete-layer="toggleDeleteGalleryLayer"
     />
     <ExtensionGalleryLayer
       :codeId="codeId"
@@ -90,7 +88,7 @@
 import axios from 'axios'
 import API_URL from '../API_URL'
 
-import DeleteGalleryLayer from '../components/DeleteGalleryLayer.vue'
+import ConfirmDeleteLayer from '../components/ConfirmDeleteLayer.vue'
 import ExtensionGalleryLayer from '../components/ExtensionGalleryLayer.vue'
 
 export default {
@@ -100,7 +98,7 @@ export default {
       codeId: '',
       codeCode: '',
       timeToDelete: 604800000,
-      isDeleteGalleryLayer: false,
+      isConfirmDeleteLayer: false,
       isExtensionGalleryLayer: false,
     }
   },
@@ -108,7 +106,7 @@ export default {
     jwt: String
   },
   components: {
-    DeleteGalleryLayer,
+    ConfirmDeleteLayer,
     ExtensionGalleryLayer,
   },
   async created() {
@@ -154,7 +152,7 @@ export default {
     toggleDeleteGalleryLayer(id, code){
       this.codeId = id;
       this.codeCode = code;
-      this.isDeleteGalleryLayer = !this.isDeleteGalleryLayer;
+      this.isConfirmDeleteLayer = !this.isConfirmDeleteLayer;
     },
     toggleExtensionGalleryLayer(id, code){
       this.codeId = id;

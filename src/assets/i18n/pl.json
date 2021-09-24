@@ -44,7 +44,8 @@
     "code": "Kod",
     "expiration-date": "Data wygaśnięcia",
     "description": "Opis",
-    "number-of-photos": "Liczba zdjęć"
+    "number-of-images": "Liczba zdjęć",
+    "download-all-images": "Pobierz wszystkie zdjęcia"
   },
   "navbar": {
     "main-page": "Strona główna",

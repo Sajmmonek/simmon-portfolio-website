@@ -18,7 +18,7 @@
   },
   "to-download": {
     "to-download": "To download",
-    "sub-text": "Poniżej podaj twój kod dostępu aby pobrać wybrane zdjęcia",
+    "sub-text": "Enter your access code below to download selected images",
     "access-code": "Access code",
     "search": "Search"
   },
@@ -51,7 +51,8 @@
     "code": "Code",
     "expiration-date": "Expiration date",
     "description": "Description",
-    "number-of-photos": "Number of photos"
+    "number-of-images": "Number of images",
+    "download-all-images": "Download all images"
   },
   "alert": {
     "attention": "Attention",
