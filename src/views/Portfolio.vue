@@ -38,7 +38,7 @@
     </div>
     <PhotoLayer
       v-else
-      :imageProp="this.imageToLayer"
+      :imagePropObject="this.imageToLayer"
       @toggle-show-photo-layer="toggleShowPhotoLayer"
     />
     <Footer />

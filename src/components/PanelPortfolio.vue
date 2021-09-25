@@ -38,13 +38,13 @@
           >
             <div class="flex flex-col w-full justify-end items-center">
               <button
-                @click="toggleShowPhotoLayer(image)"
+                @click="toggleShowPhotoLayer(image.image)"
                 class="w-72 h-72 bg-center bg-cover bg-no-repeat m-2 rounded shadow-md"
                 :style="{ backgroundImage: 'url(' + image.image + ')' }"
               >
               </button>
               <div class="flex w-full justify-end">
-                <router-link :to="{ name: 'EditPortfolioImage', params: { imageId: image.id, description: image.description, portfolioId: image.id }}" class="hover:text-gray-300">
+                <router-link :to="{ name: 'EditPortfolioImage', params: { imageProp: image.image, description: image.description, portfolioId: image.id }}" class="hover:text-gray-300">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
@@ -62,7 +62,7 @@
     </div>
     <PhotoLayer
       v-else-if="isPhotoLayerVisible"
-      :imageProp="this.imageToLayer"
+      :imagePropString="this.imageToLayer"
       @toggle-show-photo-layer="toggleShowPhotoLayer"
     />
     <ConfirmDeleteLayer
@@ -86,7 +86,7 @@ export default {
       portfolioImageId: '',
       isDeletePortfolioImageLayer: false,
       
-      imageToLayer: {},
+      imageToLayer: '',
       isPhotoLayerVisible: false,
     }
   },

@@ -97,9 +97,9 @@ export default {
         )
         .then(async res => {
             console.log(res)
-            await this.imagesUrl.push(res.data.url)
+            await this.imagesUrl.push(res.data.secure_url)
             await axios.post(`${API_URL}/drive-images`,
-            { url: res.data.url },
+            { url: res.data.secure_url },
             { headers: { Authorization: `Bearer ${this.jwt}` } }
             )
             .then(() => {

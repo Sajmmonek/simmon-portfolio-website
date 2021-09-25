@@ -36,7 +36,6 @@ export default defineComponent({
     Pagination,
   },
   created() {
-    console.log(this.windowWidth)
     if(this.windowWidth > 900) {
       this.itemsToShow = 3
     }

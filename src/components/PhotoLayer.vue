@@ -24,14 +24,16 @@ export default {
     }
   },
   props: {
-    imageProp: Object,
+    imagePropObject: Object,
+    imagePropString: String
   },
   created() {
-    this.image = this.imageProp
+    if(this.imagePropObject) {
+      this.image = this.imagePropObject
+    }
 
-    if(!this.imageProp.image) {
-      this.image.image = this.imageProp.url
-      this.image.image = this.imageProp.url
+    if(this.imagePropString) {
+      this.image.image = this.imagePropString
     }
   },
 }

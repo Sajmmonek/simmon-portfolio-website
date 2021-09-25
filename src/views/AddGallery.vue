@@ -104,8 +104,8 @@ import API_URL from '../API_URL'
 import expirationOptions  from  '../json_files/expirationOptions .json'
 
 export default {
-  components: { 
-    Navbar, 
+  components: {
+    Navbar,
     Footer,
     Alert
   },
@@ -118,8 +118,8 @@ export default {
       images: [],
       imagesUrl: [],
 
-      ISjwt: this.$cookies.isKey('jwt') ? this.$cookies.isKey('jwt') : false,
-      jwt: this.$cookies.get('jwt') ? this.$cookies.get('jwt') : false,
+      jwt: this.$cookies.get('jwt'),
+      ISjwt: this.$cookies.isKey('jwt'),
 
       expirationOptions : expirationOptions ,
       expirationTime: 604800000,
@@ -150,7 +150,7 @@ export default {
     },
     async addGallery(){
       this.codeValue = this.codeValue.replace(/ /g,'')
-      
+
       await axios.get(`${API_URL}/galleries/${this.codeValue}`)
       .then(() => {
         this.setTimeout = setTimeout(() =>{
@@ -178,7 +178,7 @@ export default {
           )
           .then(async res => {
             console.log(res.data);
-            await this.imagesUrl.push(res.data.url);
+            await this.imagesUrl.push(res.data.secure_url);
             if(this.imagesUrl.length === this.images.length) isPostedImages = true;
           })
           .catch(err => console.log(err))

@@ -2,7 +2,11 @@
   <div>
     <Navbar />
     <div class="flex w-full justify-center mx-auto my-32">
-      <form @submit.prevent="editPortfolioImage" class="container w-11/12 sm:max-w-3xl bg-gray-700 rounded-md shadow-md p-5">
+      <div class="container w-11/12 sm:max-w-3xl bg-gray-700 rounded-md shadow-md p-5">
+        <Alert
+          v-show="codeError"
+          :alertText="alertText"
+        />
         <h1 class="text-3xl font-semibold text-blue-400 mb-5">Edytuj zdjęcie z portfolio</h1>
 
         <div class="flex flex-col">
@@ -10,9 +14,11 @@
           <input
             type="file"
             accept="image/png, image/jpeg"
+            required
             class="bg-gray-800 w-full sm:w-2/3 p-3 rounded-md shadow-md"
             @change="onFileChange($event)"
           >
+          <button @click="editImage" class="main-data-button w-44 mt-4">Edytuj zdjęcie</button>
         </div>
 
         <div class="flex flex-col mt-5">
@@ -44,6 +50,7 @@
             cols="20"
             rows="10"
           ></textarea>
+          <button @click="editDescription" class="main-data-button w-44 mt-4">Edytuj opis</button>
         </div>
 
         <input
@@ -51,7 +58,7 @@
           value="Zapisz zmiany"
           class="bg-gray-800 p-2 rounded shadow-md hover:bg-gray-900 cursor-pointer"
         >
-      </form>
+      </div>
     </div>
     <Footer />
   </div>
@@ -60,6 +67,8 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
+import Alert from '../components/Alert.vue'
+
 
 import axios from 'axios'
 import API_URL from '../API_URL'
@@ -68,42 +77,42 @@ export default {
   components: {
     Navbar,
     Footer,
+    Alert
   },
   data(){
     return{
-      codeValue: '',
       descriptionValue: '',
+
+      codeError: false,
+      setTimeout: Function,
+      setTimeoutTime: 4000,
+      alertText: '',
 
       url: '',
       image: {},
 
-      ISjwt: this.$cookies.isKey('jwt') ? this.$cookies.isKey('jwt') : false,
       jwt: this.$cookies.get('jwt') ? this.$cookies.get('jwt') : false,
+      ISjwt: this.$cookies.isKey('jwt') ? this.$cookies.isKey('jwt') : false,
     }
   },
   props: {
-    imageId: String,
+    imageProp: String,
     description: String,
     portfolioId: String,
   },
-  async created(){
+  created(){
     if(!this.ISjwt){
       this.$router.push('/login')
     }
 
-    if(!this.imageId || !this.description) {
+    console.log(this.portfolioId)
+
+    if(!this.imageProp || !this.description) {
       this.$router.push('/panel')
     }
 
+    this.url = this.imageProp
     this.descriptionValue = this.description
-
-    await axios.get(`${API_URL}/portfolio-images/${this.imageId}`)
-    .then((res) => {
-      this.image = res.data
-      this.url = res.data.image
-    })
-    .catch(err => console.log(err))
-
   },
   methods: {
     async onFileChange(e){
@@ -116,9 +125,21 @@ export default {
       this.url = ''
       this.image = ''
     },
-    async editPortfolioImage(){
-      let isPostedImages = false;
-
+    async editDescription(){
+      await axios.put(`${API_URL}/portfolio-images/${this.portfolioId}`,
+      { description: this.descriptionValue },
+      { headers: { Authorization: `Bearer ${this.jwt}` } }
+      )
+      .then(() => {
+        this.setTimeout = setTimeout(() =>{
+          this.codeError = false
+        },this.setTimeoutTime)
+        this.alertText = 'Pomyślnie zmieniono opis'
+        return this.codeError = true
+      })
+      .catch(err => console.log(err))
+    },
+    async editImage(){
       const data = new FormData()
       data.append('file', this.image)
       data.append("api_key", '416912495735314');
@@ -131,26 +152,20 @@ export default {
         data
       )
       .then(async res => {
-        this.imageUrl = res.data.url;
-        isPostedImages = true;
-      })
-      .catch(async err => {
-        return await axios.put(`${API_URL}/portfolio-images/${this.portfolioId}`,
-        { description: this.descriptionValue },
-        { headers: { Authorization: `Bearer ${this.jwt}` } }
-        )
-        .then(() => this.$router.push('/panel'))
-        .catch(err => console.log(err))
-      })
-
-      if (isPostedImages){
         await axios.put(`${API_URL}/portfolio-images/${this.portfolioId}`,
-        { image: this.imageUrl, description: this.descriptionValue },
+        { image: res.data.secure_url },
         { headers: { Authorization: `Bearer ${this.jwt}` } }
         )
-        .then(() => this.$router.push('/panel'))
+        .then(() => {
+          this.setTimeout = setTimeout(() =>{
+            this.codeError = false
+          },this.setTimeoutTime)
+          this.alertText = 'Pomyślnie zmieniono zdjęcie'
+          return this.codeError = true
+        })
         .catch(err => console.log(err))
-      }
+      })
+      .catch(err => console.log(err))
     }
   }
 }

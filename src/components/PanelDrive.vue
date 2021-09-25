@@ -38,7 +38,7 @@
           >
             <div class="flex flex-col w-full justify-end items-center">
               <button
-                @click="toggleShowPhotoLayer(image)"
+                @click="toggleShowPhotoLayer(image.url)"
                 class="w-72 h-72 bg-center bg-cover bg-no-repeat m-2 rounded shadow-md"
                 :style="{ backgroundImage: 'url(' + image.url + ')' }"
               >
@@ -62,7 +62,7 @@
     />
     <PhotoLayer
       v-else-if="isPhotoLayerVisible && !isDeleteDriveImageLayer"
-      :imageProp="this.imageToLayer"
+      :imagePropString="this.imageToLayer"
       @toggle-show-photo-layer="toggleShowPhotoLayer"
     />
   </div>
@@ -81,7 +81,7 @@ export default {
       driveImageId: '',
       isDeleteDriveImageLayer: false,
 
-      imageToLayer: {},
+      imageToLayer: '',
       isPhotoLayerVisible: false,
     }
   },
