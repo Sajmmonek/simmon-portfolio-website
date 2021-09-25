@@ -1,9 +1,15 @@
 <template>
   <div>
     <Navbar />
+    <Loading v-show="loading" />
     <div class="flex w-full justify-center mx-auto my-32">
       <form @submit.prevent="addGallery" class="container w-11/12 sm:max-w-3xl bg-gray-700 rounded-md shadow-md p-5">
-        <h1 class="text-3xl font-semibold text-blue-400 mb-5">Dodaj kod</h1>
+        <div class="flex justify-between items-center">
+          <h1 class="text-3xl font-semibold text-blue-400 mb-5">Dodaj kod</h1>
+          <router-link to="/panel" class="-mt-6">
+            <img class="h-7 w-7" src="../assets/svg/undo.svg" alt="Undo arrow">
+          </router-link>
+        </div>
 
         <div class="flex flex-col">
           <label>Kod</label>
@@ -102,15 +108,20 @@ import Footer from '../components/Footer.vue'
 import axios from 'axios'
 import API_URL from '../API_URL'
 import expirationOptions  from  '../json_files/expirationOptions .json'
+import Loading from '../components/Loading.vue'
 
 export default {
   components: {
     Navbar,
     Footer,
-    Alert
+    Alert,
+    Loading
   },
   data(){
     return{
+      ISjwt: this.$cookies.isKey('jwt') ? this.$cookies.isKey('jwt') : false,
+      jwt: this.$cookies.get('jwt') ? this.$cookies.get('jwt') : false,
+
       codeValue: '',
       descriptionValue: '',
 
@@ -118,15 +129,14 @@ export default {
       images: [],
       imagesUrl: [],
 
-      jwt: this.$cookies.get('jwt'),
-      ISjwt: this.$cookies.isKey('jwt'),
-
       expirationOptions : expirationOptions ,
       expirationTime: 604800000,
 
       setTimeout: Function,
       setTimeoutTime: 4000,
-      codeError: false
+      codeError: false,
+
+      loading: false,
     }
   },
   created(){
@@ -161,8 +171,10 @@ export default {
       .catch(err => console.log(err))
       // adding images to cloudinary and waiting for save, next step is sending request to backend(strapi) and save the gallery
       if(!this.codeError){
+        this.loading = true
+
         const timeToDelete = Number(new Date()) + Number(this.expirationTime);
-        await this.images.forEach(async image =>{
+        await this.images.forEach(async image => {
           let isPostedImages = false;
 
           const data = new FormData()
@@ -189,7 +201,10 @@ export default {
             { images: this.imagesUrl, code: this.codeValue, description: this.descriptionValue ,timeToDelete },
             { headers: { Authorization: `Bearer ${this.jwt}` } }
             )
-            .then(() => this.$router.push('/panel'))
+            .then(() => {
+              this.$router.push('/panel')
+              this.loading = false
+            })
             .catch(err => console.log(err))
           }
         })

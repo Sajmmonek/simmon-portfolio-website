@@ -7,7 +7,12 @@
           v-show="codeError"
           :alertText="alertText"
         />
-        <h1 class="text-3xl font-semibold text-blue-400 mb-5">Edytuj zdjęcie z portfolio</h1>
+        <div class="flex justify-between items-center">
+          <h1 class="text-3xl font-semibold text-blue-400 mb-5">Edytuj zdjęcie z portfolio</h1>
+          <router-link to="/panel" class="-mt-6">
+            <img class="h-7 w-7" src="../assets/svg/undo.svg" alt="Undo arrow">
+          </router-link>
+        </div>
 
         <div class="flex flex-col">
           <label>Dodaj zdjęcie</label>

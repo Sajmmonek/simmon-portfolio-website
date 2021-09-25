@@ -3,7 +3,16 @@
     <Navbar />
     <div class="flex w-full justify-center mx-auto my-32">
       <div class="container w-11/12 sm:max-w-3xl bg-gray-700 rounded-md shadow-md p-5">
-        <h1 class="text-white font-semibold text-3xl mb-5">Edytuj kod <span class="text-blue-400">{{ this.codeValue }}</span></h1>
+        <Alert
+          v-show="codeError"
+          :alertText="alertText"
+        />
+        <div class="flex justify-between items-center">
+          <h1 class="text-white font-semibold text-3xl mb-5">Edytuj kod <span class="text-blue-400">{{ this.codeValue }}</span></h1>
+          <router-link to="/panel" class="-mt-6">
+            <img class="h-7 w-7" src="../assets/svg/undo.svg" alt="Undo arrow">
+          </router-link>
+        </div>
 
         <div class="flex flex-col">
           <label>Kod</label>
@@ -18,10 +27,6 @@
           >
           <button @click="editCode" class="main-data-button w-32 mt-4">Edytuj kod</button>
         </div>
-        <Alert
-          v-show="codeError"
-          :alertText="alertText"
-        />
 
         <div class="flex flex-col my-6">
           <label>Opis</label>

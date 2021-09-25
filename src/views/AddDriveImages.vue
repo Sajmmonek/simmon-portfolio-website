@@ -1,9 +1,15 @@
 <template>
   <div>
     <Navbar />
+    <Loading v-show="loading" />
     <div class="flex w-full justify-center mx-auto my-32" :class="[urls.length === 0 ? 'sm:mb-56 2xl:mb-80' : '']">
       <form @submit.prevent="addDriveImages" class="container w-11/12 sm:max-w-3xl bg-gray-700 rounded-md shadow-md p-5">
-        <h1 class="text-3xl font-semibold text-blue-400 mb-5">Dodaj zdjęcia do dysku</h1>
+        <div class="flex justify-between items-center">
+          <h1 class="text-3xl font-semibold text-blue-400 mb-5">Dodaj zdjęcia do dysku</h1>
+          <router-link to="/panel" class="-mt-6">
+            <img class="h-7 w-7" src="../assets/svg/undo.svg" alt="Undo arrow">
+          </router-link>
+        </div>
 
         <div class="flex flex-col">
           <label>Dodaj zdjęcia</label>
@@ -50,20 +56,23 @@ import Footer from '../components/Footer.vue';
 
 import axios from 'axios';
 import API_URL from '../API_URL'
+import Loading from '../components/Loading.vue';
 
 export default {
   components: {
     Navbar,
-    Footer
+    Footer,
+    Loading
   },
   data(){
     return{
+      ISjwt: this.$cookies.isKey('jwt') ? this.$cookies.isKey('jwt') : false,
+      jwt: this.$cookies.get('jwt') ? this.$cookies.get('jwt') : false,
+
       urls: [],
       images: [],
       imagesUrl: [],
-
-      ISjwt: this.$cookies.isKey('jwt') ? this.$cookies.isKey('jwt') : false,
-      jwt: this.$cookies.get('jwt') ? this.$cookies.get('jwt') : false,
+      loading: false,
     }
   },
   created() {
@@ -83,6 +92,8 @@ export default {
       this.urls.splice(index,1)
     },
     async addDriveImages(){
+      this.loading = true
+
       await this.images.forEach(async image =>{
         const data = new FormData()
         data.append('file', image)
@@ -106,6 +117,8 @@ export default {
               if(this.images.length === this.imagesUrl.length) this.$router.push('/panel')
             })
             .catch(err => console.log(err))
+
+            this.loading = false
         })
         .catch(err => console.log(err))
       })

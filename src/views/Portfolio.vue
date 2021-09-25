@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    <Loading v-show="loading" />
     <div v-if="!isPhotoLayerVisible" class="container flex flex-col items-center mx-auto mt-32 mb-48">
       <div class="flex flex-row w-84 justify-between items-center border-b border-gray-600 shadow-md mb-5">
         <input 
@@ -48,6 +49,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer.vue';
 import PhotoLayer from '../components/PhotoLayer.vue';
+import Loading from '../components/Loading.vue';
 
 import axios from 'axios';
 import API_URL from '../API_URL'
@@ -56,23 +58,26 @@ export default {
   components: {
     Navbar,
     Footer,
-    PhotoLayer
+    PhotoLayer,
+    Loading
   },
   data(){
     return{
       searchingQuery: '',
       imagesUrl: [],
       imagesUrlCopy: [],
-
       imageToLayer: {},
-      isPhotoLayerVisible: false
+      isPhotoLayerVisible: false,
+      loading: false,
     }
   },
   async created(){
+    this.loading = true
     await axios.get(`${API_URL}/portfolio-images`)
     .then(res => {
       this.imagesUrl = res.data
       this.imagesUrlCopy = res.data
+      this.loading = false
     })
     .catch(err => console.log(err))
   },
