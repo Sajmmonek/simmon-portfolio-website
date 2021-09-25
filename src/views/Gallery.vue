@@ -20,19 +20,23 @@
         </div>
       </div>
       <div class="flex flex-row flex-wrap justify-center m-10">
-        <button
+        <div
           v-for="(image, index) in gallery.images"
           :key="index"
-          @click="toggleShowPhotoLayer(image)"
-          class="bg-cover bg-no-repeat bg-center grid-cols-1 m-2 h-64 w-96 flex flex-col relative shadow-md rounded-md"
-          :style="{ backgroundImage: 'url(' + image + ')' }"
+          class="relative"
         >
+          <button
+            @click="toggleShowPhotoLayer(image)"
+            class="bg-cover bg-no-repeat bg-center grid-cols-1 m-2 h-64 w-96 flex flex-col shadow-md rounded-md"
+            :style="{ backgroundImage: 'url(' + image + ')' }"
+          >
+          </button>
           <a :href="image" class="bg-gray-700 p-2 rounded shadow-md absolute right-4 bottom-4 hover:bg-gray-600" @click.prevent="downloadSingleImage(image, index)">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </a>
-        </button>
+        </div>
       </div>
     </div>
     <PhotoLayer
